@@ -12,6 +12,8 @@ fah2 /= 5
 fah2 += 32
 print("My good man! \(cel2)°c converts directly to \(fah2)°f! Learn some math!\n")
 
+
+
 //CHECKPOINT 2
 //1.  Create an array of strings
 //2.  Write some code that:
@@ -57,8 +59,9 @@ print("In this SECOND park there are ",quantityP," people; representing ",colors
 
 //My mistake in the first attempt (that I corrected in the second attempt) was that if I use square brackets [], Swift will take that literally.  If I put in parentheses () Swift will take it referentially.  In the beginning, I attempted to refer to the setHair array using square brackets [], but this only returned a count of 1.  Removing the square brackets [] for set(hairColor2) properly refers to the entire array, returning 54.
 
-//Checkpoint 3 - Fizzbuzz!
 
+
+//CHECKPOINT 3 - Fizzbuzz!
 //attempt 1 - used my own, initial thoughts on the problem (and I messed up .isMultiple the first time)
 for i in 1...100 {
     if i % 3 == 0 && i % 5 == 0 {
