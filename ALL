@@ -1,3 +1,128 @@
-//test
-var hey = "sup?"
-print(hey)
+//CHECKPOINT 1: Farenheit to Celsius converter
+//first attempt (success)
+let cel = Double(1)
+let fah = (((cel*9)/5)+32)
+print("\nYou imperialist American! Do you not know zat \(cel)°c iz zee superior nomenclature? Vat iz zis \(fah)°f you speak of?\n")
+
+//second attempt (success)
+let cel2 = Double(1)
+var fah2 = cel2
+fah2 *= 9
+fah2 /= 5
+fah2 += 32
+print("My good man! \(cel2)°c converts directly to \(fah2)°f! Learn some math!\n")
+
+//CHECKPOINT 2
+//1.  Create an array of strings
+//2.  Write some code that:
+//      prints the number of items in the array (QTY)
+//      prints the number of unique items in the array.
+//Here's the array of strings:
+//brown, black, blonde, red, brown, auburn, silver, brown, chestnut, pink, black, blonde, blue, green, brown, platinum, black, ombre, blonde, teal, brown, burgundy, brown, sapphire, raven, strawberry blonde, brown, ash blonde, turquoise, brown, golden blonde, emerald, brown, black, sunflower, brown, ginger, rose gold, mahogany, brown, brown, caramel, pearl, jet black, pastel blue, brown, honey blonde, lavender, ruby red, charcoal, brown, taupe, blonde, coral, brown, chocolate, amber, black, peach, brown, blonde, cerulean, brown, copper, neon pink, black, cream, maroon, golden brown, aqua, beige, sepia, brown, black, mint, blonde, brown, garnet, orchid, ash gray, blonde, topaz, indigo, brown, black, blonde, fiery red, brown.
+
+//First, I paste all values into an array
+let hairColor = ["brown", "black", "blonde", "red", "brown", "auburn", "silver", "brown", "chestnut", "pink", "black", "blonde", "blue", "green", "brown", "platinum", "black", "ombre", "blonde", "teal", "brown", "burgundy", "brown", "sapphire", "raven", "strawberry blonde", "brown", "ash blonde", "turquoise", "brown", "golden blonde", "emerald", "brown", "black", "sunflower", "brown", "ginger", "rose gold", "mahogany", "brown", "brown", "caramel", "pearl", "jet black", "pastel blue", "brown", "honey blonde", "lavender", "ruby red", "charcoal", "brown", "taupe", "blonde", "coral", "brown", "chocolate", "amber", "black", "peach", "brown", "blonde", "cerulean", "brown", "copper", "neon pink", "black", "cream", "maroon", "golden brown", "aqua", "beige", "sepia", "brown", "black", "mint", "blonde", "brown", "garnet", "orchid", "ash gray", "blonde", "topaz", "indigo", "brown", "black", "blonde", "fiery red", "brown"]
+
+//This will count the list, 1 by 1 and give the quantity of people
+let quantity = hairColor.count
+
+//This will print how many unique words are in the list (not the same as quantity), by using a set
+let setHair = Set(["brown", "black", "blonde", "red", "brown", "auburn", "silver", "brown", "chestnut", "pink", "black", "blonde", "blue", "green", "brown", "platinum", "black", "ombre", "blonde", "teal", "brown", "burgundy", "brown", "sapphire", "raven", "strawberry blonde", "brown", "ash blonde", "turquoise", "brown", "golden blonde", "emerald", "brown", "black", "sunflower", "brown", "ginger", "rose gold", "mahogany", "brown", "brown", "caramel", "pearl", "jet black", "pastel blue", "brown", "honey blonde", "lavender", "ruby red", "charcoal", "brown", "taupe", "blonde", "coral", "brown", "chocolate", "amber", "black", "peach", "brown", "blonde", "cerulean", "brown", "copper", "neon pink", "black", "cream", "maroon", "golden brown", "aqua", "beige", "sepia", "brown", "black", "mint", "blonde", "brown", "garnet", "orchid", "ash gray", "blonde", "topaz", "indigo", "brown", "black", "blonde", "fiery red", "brown"])
+
+//This gives me a count of the set (where no dupes are allowed!)
+let uniqueHair = setHair.count
+
+//This will print the answer to the problem: What's the number of items in the array (QTY), and number of unique items in the array?
+//The values in the print function are smaller, instead of printing hairColor.count and setHair.count, I print "quantity" and "uniqueHair"
+print("In this park there are ",quantity," people; representing ",uniqueHair," different hair colors")
+
+//The answer is: In this park there are  88  people; representing  54  different hair colors
+
+//----------------------------------------------------------------------------------------------------------------------------
+
+//Second attempt.  I will make the code more efficient, I paste all values into an array
+let hairColor2 = ["brown", "black", "blonde", "red", "brown", "auburn", "silver", "brown", "chestnut", "pink", "black", "blonde", "blue", "green", "brown", "platinum", "black", "ombre", "blonde", "teal", "brown", "burgundy", "brown", "sapphire", "raven", "strawberry blonde", "brown", "ash blonde", "turquoise", "brown", "golden blonde", "emerald", "brown", "black", "sunflower", "brown", "ginger", "rose gold", "mahogany", "brown", "brown", "caramel", "pearl", "jet black", "pastel blue", "brown", "honey blonde", "lavender", "ruby red", "charcoal", "brown", "taupe", "blonde", "coral", "brown", "chocolate", "amber", "black", "peach", "brown", "blonde", "cerulean", "brown", "copper", "neon pink", "black", "cream", "maroon", "golden brown", "aqua", "beige", "sepia", "brown", "black", "mint", "blonde", "brown", "garnet", "orchid", "ash gray", "blonde", "topaz", "indigo", "brown", "black", "blonde", "fiery red", "brown"]
+
+//This will count the list, 1 by 1 and give the quantity of people
+let quantityP = hairColor2.count
+
+//Then I make a set and point it to the array using Set() NOT Set([])
+let colors = Set(hairColor2)
+
+//This counts how many items are in the set (no duplicates allowed)
+let colorsP = colors.count
+
+//This uses a simple sentence in order call everything correctly.
+print("In this SECOND park there are ",quantityP," people; representing ",colorsP," different hair colors")
+
+//My mistake in the first attempt (that I corrected in the second attempt) was that if I use square brackets [], Swift will take that literally.  If I put in parentheses () Swift will take it referentially.  In the beginning, I attempted to refer to the setHair array using square brackets [], but this only returned a count of 1.  Removing the square brackets [] for set(hairColor2) properly refers to the entire array, returning 54.
+
+//Checkpoint 3 - Fizzbuzz!
+
+//attempt 1 - used my own, initial thoughts on the problem (and I messed up .isMultiple the first time)
+for i in 1...100 {
+    if i % 3 == 0 && i % 5 == 0 {
+        print("Fizzbuzz")
+        continue
+    } else if i % 3 == 0 {
+        print("Fizz")
+        continue
+    } else if i % 5 == 0 {
+        print("Buzz")
+        continue
+    } else {
+        print(i)
+    }
+}
+print()
+
+//attempt 2 - I took my initial code and substituted .isMultiple in place of the equation
+for i in 1...100 {
+    if i.isMultiple(of: 3) && i.isMultiple(of: 5) {
+        print("Fizzbuzz")
+        continue
+    } else if i.isMultiple(of: 3) {
+        print("Fizz")
+        continue
+    } else if i.isMultiple(of: 5) {
+        print("Buzz")
+        continue
+    } else {
+        print(i)
+    }
+}
+print()
+
+//attempt 3, I researched more about how switches and specifically cases work and learned that I could use _ where in order to create cases that reference .isMultiple
+for i in 1...100 {
+    switch i {
+    case _ where i.isMultiple(of: 3) && i.isMultiple(of: 5):
+        print("Fizzbuzz")
+    case _ where i.isMultiple(of: 3):
+        print("Fizz")
+    case _ where i.isMultiple(of: 5):
+        print("Buzz")
+    default:
+        print(i)
+    }
+}
+print()
+
+//attempt 4, I was told what the most efficient way to solve the problem was. Then I researched why and how it worked, learned about tuples, and then referenced what I learned in order to rewrite the code.
+for i in 1...100 {
+    switch (i.isMultiple(of: 3) , i.isMultiple(of: 5)) {
+    case (true , true):
+        print("Fizzbuzz")
+    case (true , false):
+        print("Fizz")
+    case (false, true):
+        print("Buzz")
+    default: print(i)
+    }
+}
+
+
+
+
+
+
