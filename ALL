@@ -124,7 +124,70 @@ for i in 1...100 {
     }
 }
 
+//CHECKPOINT 4
+//1.  Write a function that accepts an integer from 1 through 10,000
+//2.  Returns the integer square root of that number
+//3.  Catches:
+//3a. You can’t use Swift’s built-in sqrt() function or similar – you need to find the square root yourself.
+//3b. If the number is less than 1 or greater than 10,000 you should throw an “out of bounds” error.
+//3c. You should only consider integer square roots – don’t worry about the square root of 3 being 1.732, for example.
+//3d. If you can’t find the square root, throw a “no root” error.
 
+//I believe this is good for figuring out the square root
+let sq = 16
+for i in 1...sq {
+    if i * i == sq {
+        print("the square root of \(sq) is \(i)")
+    }
+}
+print()
+
+//Attempt 1!  I can tell this is bad code.  It gets the correct answer while also returning "no root" regardless of whether it's true or not.  I want to tell it to check everything and if there's a "good answer" to return that and be done, or else figure out if there's no root and print "no root."  I also found out that the default case also runs every single time.  I do not know why this is.
+func checkRootOf(_ sqrt: Int) {
+    if sqrt < 1 || sqrt > 10_000 {
+        print("out of bounds")
+    }
+    for i in 1...sqrt {
+        switch sqrt {
+        case _ where i * i == sqrt:                         //This is the good answer
+            print("The square root of \(sqrt) is \(i)")
+        case _ where i * i != sqrt && i * i < sqrt:         //This is what happens for all the in-between numbers
+            continue
+        case _ where i == sqrt:                           //This should occur ONCE when all the others have failed
+            print("no root")
+        default: continue
+        }
+    }
+}
+checkRootOf(36)
+
+//Attempt 3, This is me using ChatGPT and making it be super hands-on with me.  Put this code here, put that code there.  I did the code, but it gave me the steps.  This is the correct answer
+enum sqError2: Error {
+    case outOfBounds, noRoot
+}
+
+func checkRootOf3(_ sqrt: Int) throws {
+    if sqrt < 1 || sqrt > 10_000 {
+        print("Out of Bounds")
+        throw sqError2.outOfBounds
+    }
+    var isSquare = false
+    for i in 1...sqrt {
+        if i * i == sqrt {
+            isSquare = true
+            print("the square root of \(sqrt) is \(i)")
+        }
+    }
+    if isSquare == false {
+        print("no root")
+        throw sqError2.noRoot
+    }
+}
+
+do {
+    try checkRootOf3(1500)}
+    catch sqError2.outOfBounds {print("Choose a number between 1 and 10,000")}
+    catch sqError2.noRoot {print("This does not have an integer-based square root")}
 
 
 
